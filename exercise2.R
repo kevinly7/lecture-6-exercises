@@ -50,17 +50,26 @@ highest_expenditure <- personal_expenditure$category[personal_expenditure$X1960 
 # Write a function that takes in a year as a parameter, and 
 # returns the highest spending category of that year
 highest_spending_of_year <- function(year) {
-  year <- paste('X', year, sep = '')
-  return(personal_expenditure$category[personal_expenditure$year == max(personal_expenditure$year)])
+  return(personal_expenditure$category[personal_expenditure[year] == max(personal_expenditure[year])])
 }
 
 # Using your function, determine the highest spending category of each year
-highest_speding_1940 <- highest_spending_of_year(1940)
-highest_speding_1945 <- highest_spending_of_year(1945)
-highest_speding_1950 <- highest_spending_of_year(1950)
-highest_speding_1955 <- highest_spending_of_year(1955)
-highest_speding_1960 <- highest_spending_of_year(1960)
+highest_speding_1940 <- highest_spending_of_year('X1940')
+highest_speding_1945 <- highest_spending_of_year('X1945')
+highest_speding_1950 <- highest_spending_of_year('X1950')
+highest_speding_1955 <- highest_spending_of_year('X1955')
+highest_speding_1960 <- highest_spending_of_year('X1960')
 
 ### Bonus ###
 # Write a loop to cycle through the years, and store the highest spending category of
 # each year in a list
+highest_spending_per_year_list <- list()
+for(year in seq(1940, 1960, 5)) {
+  year_index <- paste0('X', year)
+  highest_spending_per_year_list[year_index] <- highest_spending_of_year(year_index)
+}
+
+
+
+
+
